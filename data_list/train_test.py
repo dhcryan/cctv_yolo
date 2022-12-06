@@ -1,8 +1,8 @@
 import random 
  
-fin = open("./dataset.txt", 'rb') 
-f60out = open("./FOOTTRAFFIC_train_list.txt", 'wb') 
-f40out = open("./FOOTTRAFFIC_test_list.txt", 'wb') 
+fin = open("./foottraffic/dataset.txt", 'rb') 
+f60out = open("./foottraffic/FOOTTRAFFIC_train_list.txt", 'wb') 
+f40out = open("./foottraffic/FOOTTRAFFIC_test_list.txt", 'wb') 
 for line in fin: 
     r = random.random() 
     if r < 0.60: 

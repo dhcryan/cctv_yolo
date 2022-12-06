@@ -3,25 +3,24 @@ import torch.nn as nn
 from torch.nn import functional as F
 
 __all__ = ['inception_iccv']
-
 def inception_iccv(pretrained=True, debug=False, **kwargs):
     model = InceptionNet(**kwargs)
     """
         Pretrained model: 'https://github.com/Cadene/pretrained-models.pytorch/blob/master/pretrainedmodels/models/bninception.py'
         Initializing with basedline models (trained BN-Inception) can obtain better results.
     """
-    if pretrained:
-        pretrained_dict = torch.load('/home/dhc4003/cctv/ALM-pedestrian-attribute/model/25.pth.tar')
-        model_dict = model.state_dict()
-        new_dict = {}
-        for k,_ in model_dict.items():
-            raw_name = k.replace('main_branch.', '')
-            if raw_name in pretrained_dict:
-                new_dict[k] = pretrained_dict[raw_name]
-        model_dict.update(new_dict)
-        model.load_state_dict(model_dict)
+    # if pretrained:
+    #     pretrained_dict = torch.load('/home/dhc4003/cctv_yolo/model/25.pth.tar')
+    #     model_dict = model.state_dict()
+    #     new_dict = {}
+    #     for k,_ in model_dict.items():
+    #         raw_name = k.replace('main_branch.', '')
+    #         # print(raw_name)
+    #         if raw_name in pretrained_dict:
+    #             new_dict[k] = pretrained_dict[raw_name]
+    #     model_dict.update(new_dict)
+    #     model.load_state_dict(model_dict)
     return model
-
 
 class ChannelAttn(nn.Module):
     def __init__(self, in_channels, reduction_rate=16):
@@ -37,7 +36,6 @@ class ChannelAttn(nn.Module):
         x = F.relu(self.conv1(x))
         x = self.conv2(x)
         return torch.sigmoid(x)
-
 
 class SpatialTransformBlock(nn.Module):
     def __init__(self, num_classes, pooling_size, channels):
