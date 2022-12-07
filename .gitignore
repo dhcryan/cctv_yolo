@@ -2,3 +2,9 @@
 /home/dhc4003/cctv_yolo/data_list/foottraffic/ju_ja
 /home/dhc4003/cctv_yolo/data_list/foottraffic/ye_ma
 /home/dhc4003/cctv_yolo/test
+*.json
+*.mp4
+*.jpg
+frames
+images
+labels
