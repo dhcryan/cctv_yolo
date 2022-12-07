@@ -44,9 +44,9 @@ for t in top:
         for ac in acce:
             data = str(i) + ' '
             data2 = ''
-            i += 1
             data2 += t + ' ' + p + ' ' + ac
             dict[data2] = i
+            i += 1
             f.write(data + data2 + '\n')
 f.close()
 print("write class-list end...\n")
