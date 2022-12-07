@@ -3,19 +3,21 @@ import torch.nn as nn
 from torch.nn import functional as F
 
 __all__ = ['inception_iccv']
+
 def inception_iccv(pretrained=True, debug=False, **kwargs):
     model = InceptionNet(**kwargs)
     """
         Pretrained model: 'https://github.com/Cadene/pretrained-models.pytorch/blob/master/pretrainedmodels/models/bninception.py'
         Initializing with basedline models (trained BN-Inception) can obtain better results.
     """
+    # tar안에 여러개 모델 객체들이 들어 있음
     # if pretrained:
     #     pretrained_dict = torch.load('/home/dhc4003/cctv_yolo/model/25.pth.tar')
     #     model_dict = model.state_dict()
     #     new_dict = {}
     #     for k,_ in model_dict.items():
     #         raw_name = k.replace('main_branch.', '')
-    #         # print(raw_name)
+    #         print(raw_name)
     #         if raw_name in pretrained_dict:
     #             new_dict[k] = pretrained_dict[raw_name]
     #     model_dict.update(new_dict)

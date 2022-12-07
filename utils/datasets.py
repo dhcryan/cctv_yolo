@@ -39,6 +39,7 @@ class MultiLabelDataset(data.Dataset):
         raw_img = img.copy()
         if self.transform is not None:
             img = self.transform(img)
+        # print(img.shape) 3*256*128
         return img, torch.Tensor(label)
     
     def __len__(self):

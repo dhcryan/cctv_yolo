@@ -133,9 +133,10 @@ def train(train_loader, model, criterion, optimizer, epoch):
     batch_time = AverageMeter()
     losses = AverageMeter()
     top1 = AverageMeter()
-    model.train()
-
+    model.train() 
     end = time.time()
+
+# print(input,target) input->target(0,1)
     for i, _ in enumerate(train_loader):
         input, target = _
         target = target.cuda(non_blocking=True)
@@ -192,7 +193,6 @@ def validate(val_loader, model, criterion, epoch):
         target = target.cuda(non_blocking=True)
         input = input.cuda(non_blocking=True)
         output = model(input)
-
         bs = target.size(0)
 
         if type(output) == type(()) or type(output) == type([]):
