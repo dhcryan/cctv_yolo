@@ -321,14 +321,31 @@ def test(val_loader, model, attr_num, description):
         print('\t' + 'F1_Score:  '+str(f1))
     print('=' * 100)
 
+########
+# create_time= datetime.datetime.now()
+# date =create_time.strftime("%d-%m-%y,%H:%M:%S")
+# best_dir='/home/dhc4003/cctv_yolo/'
+# ckpt_dir='/home/dhc4003/cctv_yolo/checkpoint/'
+
+# accuracy_max=0
+# start_epoch=0
+# def saveCheckpoint(checkpoint,is_best,ckpt_dir,best_dir):
+#   f_path=ckpt_dir+'ckpt.pt'
+#   torch.save(checkpoint,f_path)
+#   if is_best:
+#     best_fpath=best_dir+'best_model.pt'
+#     shutil.copyfile(f_path,best_fpath)
+#######
 
 def save_checkpoint(state, epoch, prefix, filename='.pth.tar'):
     """Saves checkpoint to disk"""
-    directory = '/home/dhc4003/cctv_yolo' + args.experiment + '/' + args.approach + '/'
+    directory = '/home/dhc4003/cctv_yolo' +'/'+ args.experiment + '/' + args.approach + '/'
+    print(directory)
     if not os.path.exists(directory):
         os.makedirs(directory)
     if prefix == '':
         filename = directory + str(epoch) + filename
+        print(filename)
     else:
         filename = directory + prefix + '_' + str(epoch) + filename
     torch.save(state, filename)
